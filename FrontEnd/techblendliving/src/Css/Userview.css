@@ -3,6 +3,7 @@ body {
   font-family: Arial, sans-serif;
   margin: 0;
   padding: 0;
+  background-color: #f3f4f6; /* Background color for the entire page */
 }
 
 .container {
@@ -11,22 +12,27 @@ body {
   padding: 20px;
 }
 
-.backbtn{
+.backbtn {
   margin: 5px;
   padding: 5px;
-  width: 80px ;
+  width: 80px;
 }
+
 /* User dashboard styles */
 .userview {
   display: flex;
-  background-image: url("./BG5.svg");
-  min-height: 120vh;
+  min-height: 100vh; /* Adjusted minimum height */
   align-items: flex-start;
+  background-image: url("./BG5.svg");
+  background-size: cover;
+  background-position: center;
+  padding-top: 50px; /* Adjusted padding for better alignment */
 }
 
 .leftuser,
 .rightuser {
   width: 25%;
+  
   padding: 20px;
   border-radius: 15px;
   background-color: #ffffff;
@@ -90,6 +96,7 @@ body {
 .middleuser {
   flex: 1;
   padding: 20px;
+  margin-right: 20px;
 }
 
 .filter-and-search-container {
@@ -103,7 +110,7 @@ body {
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
   padding: 20px;
   margin-bottom: 20px;
- display: flex;
+  display: flex;
   justify-content: space-between;
   align-items: center;
   font-size: 16px;
@@ -118,13 +125,12 @@ body {
 .searchbar-main input[type="text"] {
   flex: 1;
   padding: 8px;
- 
   border: 1px solid #ddd;
   border-radius: 5px 0 0 5px;
 }
 
 .searchbar-main button.searchbtn {
-  background-color:#D8232A ;
+  background-color: #d8232a;
   color: #fff;
   border: none;
   border-radius: 0 5px 5px 0;
@@ -133,10 +139,11 @@ body {
 }
 
 .searchbar-main button.searchbtn:hover {
-  background-color: #D8232A ;
+  background-color: #d8232a;
 }
 
 .price-filter {
+  margin-left: 470px;
   background-color: #f9f9f9;
   border-radius: 10px;
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
@@ -149,6 +156,10 @@ body {
   font-size: 16px;
   border: 1px solid #ddd;
   border-radius: 5px;
+}
+
+.middleuser {
+  margin-right: 100px;
 }
 
 .filter-section {
@@ -195,6 +206,11 @@ body {
 .imageLayout {
   width: 100%;
   border-radius: 10px;
+  transition: transform 0.3s ease;
+}
+
+.imageLayout:hover {
+  transform: scale(1.2); /* Increase scale to 110% on hover */
 }
 
 .property-info {

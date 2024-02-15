@@ -1,0 +1,99 @@
+/* DetailedProperty.css */
+
+/* General styles */
+body {
+  font-family: Arial, sans-serif;
+  margin: 0;
+  padding: 0;
+  background-color: #f3f4f6; /* Background color for the entire page */
+}
+
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 20px;
+}
+
+.backbtn {
+  margin: 5px;
+  padding: 5px;
+  width: 80px;
+}
+
+/* Detailed property view styles */
+.userview {
+  display: flex;
+  min-height: 100vh;
+  align-items: flex-start;
+  padding-top: 50px;
+}
+
+.middleuser {
+  width: 60%;
+  flex: 1;
+  padding: 20px;
+}
+
+.detailsResult {
+  background-color: #f9f9f9;
+  border-radius: 10px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  padding: 20px;
+  width: 100%; /* Adjusted width */
+}
+
+.rightUser {
+  width: 40%; /* Adjusted width */
+  border-radius: 15px;
+  background-color: #ffffff;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  margin-left: 20px; /* Added margin to create space between middle and right sections */
+}
+
+.imageLayout:hover {
+  transform: scale(1.1); /* Increase scale to 110% on hover */
+}
+
+.tableForProperty {
+  width: 100%;
+}
+
+.tableForProperty td {
+  padding: 10px;
+  border-bottom: 1px solid #ddd;
+}
+
+.imageLayout {
+  width:100%;
+  border-radius: 10px;
+  object-fit: cover;
+}
+
+h2 {
+  margin-bottom: 10px;
+}
+
+.pagination {
+  margin-top: 20px;
+  display: flex;
+  justify-content: center;
+}
+
+.pagination .page-link {
+  color: #007bff;
+  border: 1px solid #007bff;
+  margin: 0 2px;
+}
+
+.pagination .page-item.active .page-link {
+  background-color: #007bff;
+  border-color: #007bff;
+  color: #fff;
+}
+
+.pagination .page-link:hover {
+  background-color: #007bff;
+  border-color: #007bff;
+  color: #fff;
+  cursor: pointer;
+}

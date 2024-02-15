@@ -69,5 +69,14 @@ export async function serviceDeleteById(propertyid)
     }
                 
 }
-
+export async function servicesDataFetchByCity(city)
+{        
+    try {
+        const response = axios.get(`http://localhost:9090/getservicedetailsbycity/${city}`);
+        return response; 
+    }catch(error){
+            console.log(error);
+    }
+                
+}
 

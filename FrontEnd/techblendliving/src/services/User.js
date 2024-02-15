@@ -42,3 +42,11 @@ export async function getSearchProperty(search){
    console.log(error);
     }
 }
+export async function getPropertyById(id){
+    try{
+    const response = axios.get(`http://localhost:9090/getdetailsspecificbyid/${id}`);
+    return response
+    }catch(error){
+   console.log(error);
+    }
+}
