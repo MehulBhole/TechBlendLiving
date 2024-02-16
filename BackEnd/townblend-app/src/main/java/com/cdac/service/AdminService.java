@@ -9,16 +9,20 @@ import org.springframework.stereotype.Service;
 import com.cdac.entity.Admin;
 import com.cdac.entity.PropertyOwner;
 import com.cdac.entity.ApprovalStatus;
+import com.cdac.entity.Feedback;
 import com.cdac.entity.ServiceProvider;
 import com.cdac.repository.AdminRepository;
+import com.cdac.repository.FeedbackRepository;
 import com.cdac.repository.PropertyOwnerRepository;
 import com.cdac.repository.ServiceProviderRepository;
 
 @Service
 public class AdminService {
+	@Autowired
+	private FeedbackRepository feedbackRepository;
 	
 	@Autowired
-	private AdminRepository adminRepository;
+	private AdminRepository adminRepository; 
 	@Autowired 
 	private PropertyOwnerRepository propertyOwnerRepository;
 	
@@ -65,5 +69,11 @@ public class AdminService {
 	public ServiceProvider validationRejectedForProvider(int id) {
 		return serviceProviderRepository.findById(id).get();
 	}
+	public List<Feedback> getFeedbackDetails() {
+		
+		
+		List<Feedback> f= 	feedbackRepository.findAll();
+		return f ; 
+}
 
 }

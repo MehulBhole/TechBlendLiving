@@ -17,6 +17,7 @@ import com.cdac.service.PropertyOwnerService;
 import com.cdac.service.ServiceProviderService;
 import com.cdac.dto.AdminRespone;
 import com.cdac.entity.Admin;
+import com.cdac.entity.Feedback;
 import com.cdac.entity.PropertyOwner;
 import com.cdac.entity.ServiceProvider;
 @RestController
@@ -99,6 +100,13 @@ public class AdminController {
 		 return ResponseEntity.ok("Your Profile has been rejected");
 		 
 	 }
+
+@GetMapping("/fetchFeedbackDetails")
+public  List<Feedback> getFeedbackDetails() {
+	  List<Feedback> list  =  adminService.getFeedbackDetails(); 
+	  return list;
+ }
+	 
   
 }
 

@@ -72,6 +72,14 @@ export async function HostApprovalServiceById(id)
     }catch(error){
             console.log(error);
     }
+}
+export async function FetchFeedbackDetails()
+{        
+    try {
+        const response = axios.get("http://localhost:9090/fetchFeedbackDetails");
+        return response; 
+    }catch(error){
+            console.log(error);
+    }
                 
 }
-

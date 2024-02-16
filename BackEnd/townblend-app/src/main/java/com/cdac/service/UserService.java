@@ -1,17 +1,21 @@
 package com.cdac.service;
 
 import java.util.Optional;
-
+import com.cdac.repository.FeedbackRepository;
 import org.mindrot.jbcrypt.BCrypt;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.cdac.entity.Feedback;
 import com.cdac.entity.User;
 import com.cdac.exception.ServiceException;
 import com.cdac.repository.UserRepository;
 
 @Service
 public class UserService {
+
+	@Autowired
+	private FeedbackRepository feedbackRepository;
 	
 	@Autowired
 	private UserRepository userRepository;
@@ -73,5 +77,17 @@ public class UserService {
             throw new ServiceException("User not found");
         }
     }
+	public void sendFeedback(Feedback feedback) {
+		try {
+			Feedback reponse = feedbackRepository.save(feedback);
+			System.out.println(reponse+" Saved");
+		} catch (Exception e) {
+			throw new ServiceException("Feedback not saved");
+		}
+		 
+		
+		
+	}
+    
     
 }
