@@ -30,4 +30,14 @@ export async function messagesReceived(receiverId)
     }
                 
 }
+export async function fetchChatReceiverById(senderId , receiverId)
+{        
+    try {
+        const response = axios.get(`http://localhost:9090/ownerChat/${senderId}/${receiverId}`);
+        return response; 
+    }catch(error){
+            console.log(error);
+    }
+                
+}
 
