@@ -97,3 +97,34 @@ h2 {
   color: #fff;
   cursor: pointer;
 }
+/* Chat window styles */
+.chatWindow {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  width: 300px;
+  background-color: #fff;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  padding: 10px;
+}
+
+.messageContainer {
+  height: 200px;
+  overflow-y: auto;
+  margin-bottom: 10px;
+}
+
+.message {
+  padding: 5px 10px;
+  margin-bottom: 5px;
+  border-radius: 5px;
+}
+
+.message.user {
+  background-color: #e6f2ff;
+}
+
+.message.other {
+  background-color: #f2f2f2;
+}

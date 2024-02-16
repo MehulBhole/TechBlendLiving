@@ -10,6 +10,7 @@ import java.util.List;
 import java.util.Map;
 
 import org.mindrot.jbcrypt.BCrypt;
+import org.modelmapper.ModelMapper;
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpHeaders;
@@ -31,6 +32,7 @@ import org.springframework.web.multipart.MultipartFile;
 
 import com.cdac.dto.LoginStatus;
 import com.cdac.dto.PropertyDetailsDto;
+import com.cdac.dto.PropertySpecificDto;
 import com.cdac.dto.RegistrationStatus;
 import com.cdac.dto.Status;
 import com.cdac.dto.UserInfo;
@@ -50,6 +52,9 @@ public class PropertyOwnerController {
 	private PropertyOwnerService propertyOwnerService;
 	@Autowired
 	private PropertyDetailsService propertyDetailsService;
+
+    @Autowired
+    private ModelMapper modelMapper;
 
 	@PostMapping("/ownerregister")
 	public RegistrationStatus register(@RequestBody PropertyOwner propertyOwner, Map map) {
@@ -112,6 +117,17 @@ public class PropertyOwnerController {
 
 		List<PropertyDetails> list = propertyDetailsService.findByOwnerId(id);
 		return new ResponseEntity<>(list, HttpStatus.OK);
+	}
+	@GetMapping("/getdetailsspecificbyid/{id}")
+	public PropertySpecificDto getPropertySpecificById(@PathVariable int id) {
+
+		PropertyDetails property = propertyDetailsService.findPropertyId(id);
+		PropertyOwner owner = propertyDetailsService.findOwnerById(property.getOwnerOriginalId());
+		PropertySpecificDto propertySpecificDto = modelMapper.map(property,PropertySpecificDto.class);
+		propertySpecificDto.setEmail(owner.getEmail());
+		propertySpecificDto.setName(owner.getName());
+		propertySpecificDto.setPhoneNo(owner.getPhoneNo());
+		return propertySpecificDto;
 	}
 
 	@GetMapping("/fetchImageById/{id}")
@@ -197,4 +213,5 @@ public class PropertyOwnerController {
 			return new ResponseEntity<>(status, HttpStatus.BAD_REQUEST);
 		}
 	}
+	
 }

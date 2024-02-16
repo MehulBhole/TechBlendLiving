@@ -8,5 +8,6 @@ import com.cdac.entity.ServicesDetails;
 
 public interface ServiceDetailsRepository extends JpaRepository<ServicesDetails, Integer> {
 	public List<ServicesDetails> findByProviderOriginalId(int id);
+	public List<ServicesDetails> findByCity(String city);
   
 }

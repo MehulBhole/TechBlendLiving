@@ -46,6 +46,9 @@ public class ServiceDetailsService {
 		return serviceDetailsRepository.findById(id).get();
 	}
 	
+	public List<ServicesDetails> findByCity(String city) {
+		return serviceDetailsRepository.findByCity(city);
+	}
 	public List<ServicesDetails> findByProviderId(int id){
 		return serviceDetailsRepository.findByProviderOriginalId(id);
 	}

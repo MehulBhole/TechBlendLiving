@@ -17,13 +17,15 @@ import com.cdac.entity.PropertyDetails;
 import com.cdac.entity.PropertyOwner;
 import com.cdac.exception.ServiceException;
 import com.cdac.repository.PropertyDetailsRepository;
+import com.cdac.repository.PropertyOwnerRepository;
 
 @Service
 public class PropertyDetailsService {
 
 	@Autowired
 	private PropertyDetailsRepository propertyDetailsRepository;
-	
+	@Autowired
+	private PropertyOwnerRepository propertyOwnerRepository;
 	@Autowired
 	private PropertyOwnerService propertyOwnerService;
 	
@@ -38,6 +40,11 @@ public class PropertyDetailsService {
 	public List<PropertyDetails> findByOwnerId(int id){
 		return propertyDetailsRepository.findByOwnerOriginalId(id);
 	}
+	public PropertyDetails findPropertyId(int id){
+		return propertyDetailsRepository.findById(id).get();
+	}
+	
+	
 	 public PropertyDetails getImageById(int id) {
 	        Optional<PropertyDetails> propertyDetailsOptional = propertyDetailsRepository.findById(id);
 	        if (propertyDetailsOptional.isPresent()) {
@@ -84,8 +91,9 @@ public class PropertyDetailsService {
    public List<PropertyDetails> findAll(){
 	   return propertyDetailsRepository.findAll();
    }
-//	public List<PropertyDetails> findByOwner(PropertyOwner property){
-//		return propertyDetailsRepository.findByOwnerObject(property);
-//	}
+        
+   public PropertyOwner  findOwnerById (int id) {
+	   return propertyOwnerRepository.findById(id).get();
+   }
 	
 }

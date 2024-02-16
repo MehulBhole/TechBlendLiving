@@ -136,7 +136,7 @@ export function UserView() {
           </div>
         </div>
       </div>
-      <div className="rightuser"></div>
+     
     </div>
   );
 }

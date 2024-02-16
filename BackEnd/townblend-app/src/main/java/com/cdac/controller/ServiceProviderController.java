@@ -2,6 +2,7 @@ package com.cdac.controller;
 
 import com.cdac.dto.LoginStatus;
 import com.cdac.dto.PropertyDetailsDto;
+import com.cdac.dto.PropertySpecificDto;
 import com.cdac.dto.ServiceDetailsDto;
 import com.cdac.dto.ServiceProviderDTO;
 import com.cdac.dto.Status;
@@ -9,12 +10,14 @@ import com.cdac.entity.PropertyDetails;
 import com.cdac.entity.ServiceProvider;
 import com.cdac.entity.ServicesDetails;
 import com.cdac.exception.ServiceException;
+import com.cdac.repository.ServiceProviderRepository;
 import com.cdac.service.ServiceDetailsService;
 import com.cdac.service.ServiceProviderService;
 
 
 
 import java.util.List;
+import java.util.stream.Collectors;
 
 import org.apache.logging.log4j.Logger;
 import org.modelmapper.ModelMapper;
@@ -39,7 +42,8 @@ public class ServiceProviderController {
 	
 			@Autowired
     private ServiceProviderService serviceProviderService;
-    
+    @Autowired
+    private ServiceProviderRepository serviceProviderRepository;
     @Autowired
     private ServiceDetailsService serviceDetailsService;
 
@@ -154,5 +158,24 @@ LoginStatus status = new LoginStatus();
     	List<ServicesDetails> list = serviceDetailsService.findByProviderId(id);
 
     	return new ResponseEntity<>(list,HttpStatus.OK);
+    }
+    @GetMapping("/getservicedetailsbycity/{city}")
+    public List<ServiceDetailsDto> getServiceByCity(@PathVariable String city) {
+    	
+    	List<ServicesDetails> list = serviceDetailsService.findByCity(city);
+    	 List<ServiceDetailsDto> serviceSpecificDto = list.stream().map(serviceDetails -> {
+    	        ServiceDetailsDto dto = modelMapper.map(serviceDetails, ServiceDetailsDto.class);
+    	        ServiceProvider serviceProvider = serviceProviderRepository.findById(serviceDetails.getProviderOriginalId()).orElse(null);
+    	        if (serviceProvider != null) {
+    	            dto.setName(serviceProvider.getName());
+    	            dto.setEmail(serviceProvider.getEmail());
+    	            dto.setPhoneNumber(serviceProvider.getPhoneNumber());
+    	           
+    	            
+    	        }
+    	        return dto;
+    	    }).collect(Collectors.toList());
+        
+    	return serviceSpecificDto;
     }
 }

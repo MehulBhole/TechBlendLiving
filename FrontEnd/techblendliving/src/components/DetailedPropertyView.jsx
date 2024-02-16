@@ -1,29 +1,41 @@
-import { Button, Container, Pagination, Row, Table } from "react-bootstrap";
-import { FaUser } from "react-icons/fa";
+import { Button, Container, Row, Table } from "react-bootstrap";
+import { FaFacebookMessenger, FaUser } from "react-icons/fa";
 import React, { useEffect, useState } from "react";
 import { fetchById, getPropertyById } from "../services/User";
 import { useNavigate } from "react-router-dom";
 import "../Css/DetailedProperty.css";
-import { servicesDataFetch, servicesDataFetchByCity } from "../services/ServiceProvider";
+import { servicesDataFetchByCity } from "../services/ServiceProvider";
+import { fetchChatById, sendChatData } from "../services/Chat";
 
 export function DetailedPropertyView() {
+  
   const navigate = useNavigate();
   const [propertyData, setPropertyData] = useState({});
+  const [user,setUser] = useState({});
   const [currentPage, setCurrentPage] = useState(1);
   const propertiesPerPage = 1; // Display one property per page
   const [details, setDetails] = useState([]);
+  const [messages, setMessages] = useState([]);
+  const [showChatWindow, setShowChatWindow] = useState(false); // State to manage chat window visibility
+  const [newMessage, setNewMessage] = useState("");
+  
   async function populateData() {
     try {
       const id = sessionStorage.getItem("id");
       const response = await fetchById(id);
-      
+      setUser(response.data);
       const propertyId = sessionStorage.getItem("property-id");
       const property = await getPropertyById(propertyId);
       setPropertyData(property.data);
-      console.log(propertyData.address)
-      const propertydata = await servicesDataFetchByCity(propertyData.address);
+      console.log(property.data);
+      const propertydata = await servicesDataFetchByCity(property.data.address); 
       setDetails(propertydata.data);
-      
+      const receiverId = property.data.ownerOriginalId;
+      console.log(receiverId);
+      const chatFetch = await fetchChatById(id, receiverId);
+      setMessages(chatFetch.data);
+      console.log(chatFetch.data);
+
     } catch (error) {
       console.log(error);
     }
@@ -31,6 +43,33 @@ export function DetailedPropertyView() {
 
   const handleGoBack = () => {
     navigate(`/userview`);
+  };
+  const handleSendMessage = async () => {
+    if (newMessage.trim() !== "") {
+      const receiverIdo = propertyData.ownerOriginalId;
+      const messageObject = {
+        senderId: sessionStorage.getItem("id"),
+        receiverId: receiverIdo,
+        message: newMessage
+      };
+      // Append the new message to the messages state
+      //const updatedMessages = [...messages, messageObject];
+     
+      setNewMessage(""); // Clear the input field
+  
+      try {
+        // Send the updated messages to the server
+        const response = await sendChatData(messageObject);
+        populateData();
+        console.log(response); // Log the response from the server
+      } catch (error) {
+        console.log(error); // Log any errors that occur during the request
+      }
+    }
+  };
+
+  const toggleChatWindow = () => {
+    setShowChatWindow(!showChatWindow);
   };
 
   useEffect(() => {
@@ -46,6 +85,31 @@ export function DetailedPropertyView() {
         Back
       </Button>
 
+      {/* Floating chat button */}
+      
+
+      {/* Chat window */}
+      {showChatWindow && (
+        <div className="chatWindow">
+          <h3>Chat</h3>
+          <div className="messageContainer">
+            {messages.map((message, index) => (
+              <div key={index} className={`message ${message.senderId}`}>
+                <b>{user.name}</b>: {message.message}
+              </div>
+            ))}
+          </div>
+          <input
+            type="text"
+            placeholder="Type your message..."
+            value={newMessage}
+            onChange={(e) => setNewMessage(e.target.value)}
+          />
+          <Button onClick={handleSendMessage}>Send</Button>
+        </div>
+      )}
+
+      {/* Main content */}
       <div className="middleuser">
         <div className="detailsResult">
           <div className="parentRow">
@@ -96,68 +160,47 @@ export function DetailedPropertyView() {
                 </tr>
               </tbody>
             </table>
+            <div className="floating-chat-icon" onClick={toggleChatWindow}>
+        <FaFacebookMessenger size="45px" />
+      </div>
           </div>
         </div>
-
-        {/* Pagination */}
-        {/* <Pagination>
-          <Pagination.Item
-            onClick={() => paginate(currentPage - 1)}
-            disabled={currentPage === 1}
-          >
-            Previous
-          </Pagination.Item>
-          <Pagination.Item
-            onClick={() => paginate(currentPage + 1)}
-            disabled={currentPage === Math.ceil(propertyData.length / propertiesPerPage)}
-          >
-            Next
-          </Pagination.Item>
-        </Pagination> */}
       </div>
       <div className="rightUser">
-      <center><h2>Properties</h2></center>
-         <Container className="containerHost">
-            <Row>
-            <Table  style={{textAlign:"center"}}>
-      <thead>
-        <tr>
-          <th>Service Name</th>
-          <th>City</th>
-          <th>Pin Code</th>
-          <th>Description</th>
-          <th>Rating</th>
-        </tr>
-      </thead>
-      <tbody>
-         {details.map(d=>
-        <tr>
-          <td>{d.serviceName}</td>
-          <td>{d.city}</td>
-          <td>{d.pinCode}</td>
-          <td>{d.description}</td>
-
-          
-          {/* <Button style={{marginLeft: 1 + 'em'}}variant="danger" onClick={()=>{
-           // handleDelete(d.id)
-          }}>Delete</Button> */}
-           {/* <Button style={{marginLeft: 1 + 'em'}}variant="success" onClick={()=>{
-            // handleApprove(d.id)
-          }}>Edit</Button> */}
-          
-          <td>{d.Remarks}</td>
-         
-        </tr>
-       )}
-      </tbody>
-    </Table>
-            </Row>
+        <center><h2>Properties</h2></center>
+        <Container className="containerHost">
+          <Row>
+            <Table style={{ textAlign: "center" }}>
+              <thead>
+                <tr>
+                  <th>Name</th>
+                  <th>Email</th>
+                  <th>Contact Details</th>
+                  <th>Service Name</th>
+                  <th>City</th>
+                  <th>Pin Code</th>
+                  <th>Description</th>
+                  <th>Rating</th>
+                </tr>
+              </thead>
+              <tbody>
+                {details.map(d =>
+                  <tr key={d.id}> {/* Ensure each row has a unique key */}
+                    <td>{d.name}</td>
+                    <td>{d.email}</td>
+                    <td>{d.phoneNumber}</td>
+                    <td>{d.serviceName}</td>
+                    <td>{d.city}</td>
+                    <td>{d.pinCode}</td>
+                    <td>{d.description}</td>
+                    <td>{d.Remarks}</td>
+                  </tr>
+                )}
+              </tbody>
+            </Table>
+          </Row>
         </Container>
-        {/* <Button variant="success" className="nxtbtn" onClick={()=>{
-          navigate(`/tempview`);
-        }}>View</Button> */}
       </div>
-
     </div>
   );
 }

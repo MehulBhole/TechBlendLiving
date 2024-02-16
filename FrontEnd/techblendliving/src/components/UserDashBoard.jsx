@@ -173,7 +173,7 @@ export function UserDashBoard() {
         {/* Search Result */}
         <div className="searchResult">
           <div className="corouselparent">
-            <div >
+            <div className="parentRow">
               <table className="table">
                 <thead>
                   <tr>
@@ -194,6 +194,7 @@ export function UserDashBoard() {
                               width="500"
                               onClick={()=>{
                                 sessionStorage.setItem('property-id',property.id);
+
                                 navigate(`/detailedPropertyView`)
                               }}
                             />

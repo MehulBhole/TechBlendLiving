@@ -20,9 +20,7 @@ public long getRent() {
 		this.rent = rent;
 	}
 	   private MultipartFile image1;
-//    private MultipartFile image2;
-//    private MultipartFile image3;
-//	private MultipartFile video;
+
 	private PropertyOwner owner;
 	
 	
@@ -45,12 +43,7 @@ public long getRent() {
 		this.address = address;
 	}
 	
-//	public int getId() {
-//		return id;
-//	}
-//	public void setId(int id) {
-//		this.id = id;
-//	}
+
 	
 	public MultipartFile getImage1() {
 		return image1;
@@ -58,24 +51,7 @@ public long getRent() {
 	public void setImage1(MultipartFile image1) {
 		this.image1 = image1;
 	}
-//	public MultipartFile getImage2() {
-//		return image2;
-//	}
-//	public void setImage2(MultipartFile image2) {
-//		this.image2 = image2;
-//	}
-//	public MultipartFile getImage3() {
-//		return image3;
-//	}
-//	public void setImage3(MultipartFile image3) {
-//		this.image3 = image3;
-//	}
-//	public MultipartFile getVideo() {
-//		return video;
-//	}
-//	public void setVideo(MultipartFile video) {
-//		this.video = video;
-//	}
+
 	public PropertyOwner getOwner() {
 		return owner;
 	}
