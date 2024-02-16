@@ -26,6 +26,7 @@ import { UserDashBoard } from './components/UserDashBoard';
 import { Profile } from './components/Profile';
 import { ServiceDashBoard } from './components/ServiceDashBoard';
 import { DetailedPropertyView } from './components/DetailedPropertyView';
+import { Feedback } from './components/Feedback'
 
 
 
@@ -70,6 +71,7 @@ function App() {
   <Route path="/profile" element={<Profile></Profile>}></Route>
   <Route path="/servicedashboard" element={<ServiceDashBoard></ServiceDashBoard>}></Route>
   <Route path="/detailedPropertyView" element={<DetailedPropertyView></DetailedPropertyView>}></Route>
+  <Route path="/fetchFeedbackDetails" element={<Feedback />} />
 
  
  </Routes>
