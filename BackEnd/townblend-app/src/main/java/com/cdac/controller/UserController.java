@@ -2,7 +2,6 @@ package com.cdac.controller;
 
 import java.util.List;
 import java.util.Map;
-
 import org.mindrot.jbcrypt.BCrypt;
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -25,6 +24,8 @@ import com.cdac.entity.User;
 import com.cdac.exception.ServiceException;
 import com.cdac.service.PropertyDetailsService;
 import com.cdac.service.UserService;
+import com.cdac.entity.Feedback;
+
 
 @RestController
 @CrossOrigin
@@ -126,4 +127,31 @@ public class UserController{
             return e.getMessage();
         }
     }
+    @PostMapping("/sendFeedbackData")
+	public RegistrationStatus sendFeedbackData(@RequestBody Feedback feedback ) {
+		
+		try {
+			
+			 userService.sendFeedback(feedback);
+			
+			RegistrationStatus status = new RegistrationStatus();
+			
+			status.setStatus(true);
+			status.setStatusMessage("Feedback registered successfully");  
+			return status;
+			
+		}catch(ServiceException e) {
+			
+			RegistrationStatus status = new RegistrationStatus();
+			
+			status.setStatus(false);
+			status.setStatusMessage(e.getMessage());
+			
+			return status;
+		}
+    
+   
 }
+    }
+
+

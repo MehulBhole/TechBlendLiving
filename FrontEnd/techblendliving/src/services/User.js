@@ -50,3 +50,11 @@ export async function getPropertyById(id){
    console.log(error);
     }
 }
+export async function sendFeedbackData(feedback){
+    try{
+    const response = axios.post(`http://localhost:9090/sendFeedbackData`,feedback);
+    return response;
+    }catch(error){
+   console.log(error);
+    }
+}
