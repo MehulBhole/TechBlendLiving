@@ -1,0 +1,125 @@
+.card-header {
+  background-color: #D8232A;
+  color: #fff;
+  border-radius: 100px;
+  align-items: center;
+  text-align: center;
+  margin-top: 40px;
+  margin-left: 35%;
+  width: 30%;
+  padding: 10px;
+ 
+ 
+}
+
+.card-body {
+  padding: 30px;
+}
+
+.profile-container {
+  width: 80%;
+  margin: auto;
+  max-width: 25rem;
+    background-color: #ffffff;
+    box-shadow: 10px 12px 15px rgba(0, 0, 0, 0.3);
+}
+
+.profile-heading {
+  text-align: center;
+  
+}
+
+.profile-heading h2 {
+  font-size: 24px;
+}
+
+.user-data {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.user-icon {
+  margin-bottom: 20px;
+}
+
+.user-icon svg {
+  font-size: 90px;
+}
+
+.user-details {
+  margin-bottom: 20px;
+}
+
+.user-details label {
+  font-weight: bold;
+}
+
+.user-details input {
+  width: 100%;
+  padding: 6px;
+  margin-top: 5px;
+  margin-bottom: 15px;
+  border: 1px solid #ced4da;
+  border-radius: 4px;
+}
+
+.edit-buttons {
+  margin-top: 15px;
+}
+
+.edit-buttons button {
+  margin-right: 10px;
+}
+
+.newImg {
+  border-radius: 50%;
+  width: 200px; /* Increased size for the profile picture */
+  height: 200px;
+  object-fit: cover;
+  border: 8px solid #fff;
+  box-shadow: 0 0 15px rgba(0, 0, 0, 0.2);
+  transition: transform 0.3s ease-in-out;
+}
+
+.newImg:hover {
+  transform: scale(1.1);
+}
+
+.card-body h4 {
+  color: #555;
+}
+
+.card-body p {
+  margin-bottom: 20px;
+}
+
+.social-links {
+  margin-top: 30px;
+}
+
+.social-icon {
+  font-size: 30px; /* Larger size for social icons */
+  margin-right: 20px;
+  color: #555;
+  transition: color 0.3s ease-in-out;
+}
+
+.social-icon:hover {
+  color: #D8232A;
+}
+
+.button-edit-profile {
+  padding: 12px 24px; /* Larger padding for the button */
+  font-size: 18px; /* Larger font size for the button */
+  background-color: #D8232A;
+  color: #fff;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s ease-in-out;
+}
+
+.button-edit-profile:hover {
+  background-color: #D8232A;
+}

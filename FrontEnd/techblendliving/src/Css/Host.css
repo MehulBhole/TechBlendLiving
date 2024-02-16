@@ -1,0 +1,18 @@
+.host{
+    margin-top: 30px;
+    height: 900px;
+    background-image: url(BG5.svg);
+    display: flex;
+    
+}
+.containerHost{
+   
+    margin-top: 10px;
+    border: 2px #e8e8e8 solid;
+    border-radius: 15px;
+    width: 100%;
+    box-shadow: 10px 12px 15px rgba(0, 0, 0, 0.3);
+}
+.containerHost table{
+    width: 100%;
+}
