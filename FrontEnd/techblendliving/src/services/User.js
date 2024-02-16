@@ -19,6 +19,7 @@ export async function sendLoginData(userLogin){
     }
 }
 export async function fetchById(userId){
+    console.log(userId);
     try {
         const response  = axios.get(`http://localhost:9090/userdetails/${userId}`);
         return response;

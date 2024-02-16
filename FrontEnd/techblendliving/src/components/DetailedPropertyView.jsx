@@ -22,8 +22,10 @@ export function DetailedPropertyView() {
   async function populateData() {
     try {
       const id = sessionStorage.getItem("id");
+      console.log(id);
       const response = await fetchById(id);
       setUser(response.data);
+      console.log(user);
       const propertyId = sessionStorage.getItem("property-id");
       const property = await getPropertyById(propertyId);
       setPropertyData(property.data);
@@ -50,7 +52,8 @@ export function DetailedPropertyView() {
       const messageObject = {
         senderId: sessionStorage.getItem("id"),
         receiverId: receiverIdo,
-        message: newMessage
+        message: newMessage,
+        senderName:user.name
       };
       // Append the new message to the messages state
       //const updatedMessages = [...messages, messageObject];
@@ -95,7 +98,7 @@ export function DetailedPropertyView() {
           <div className="messageContainer">
             {messages.map((message, index) => (
               <div key={index} className={`message ${message.senderId}`}>
-                <b>{user.name}</b>: {message.message}
+                <b>{message.senderName}</b>: {message.message}
               </div>
             ))}
           </div>
