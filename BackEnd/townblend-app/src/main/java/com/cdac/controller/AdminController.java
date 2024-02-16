@@ -34,11 +34,11 @@ public class AdminController {
 	 private ServiceProviderService serviceProviderService;
 	 
 	
-	
+
 	 @PostMapping("/adminregister")
 	 public AdminRespone registerAdmin(@RequestBody Admin admin) {
 	     if (adminService.isAdminExists()) {
-	         return new AdminRespone("Admin already registered.");
+	         return new AdminRespone("Admin already registered."); // Admin Testing
 	     }
 	     adminService.registerAdmin(admin);
 	     return new AdminRespone("Admin registered successfully.");
