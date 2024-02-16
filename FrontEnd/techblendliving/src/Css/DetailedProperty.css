@@ -45,32 +45,38 @@ body {
 .rightUser {
   width: 40%; /* Adjusted width */
   border-radius: 15px;
-  background-color: #ffffff;
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
   margin-left: 20px; /* Added margin to create space between middle and right sections */
+  padding: 20px;
+  overflow: hidden; /* Hide overflow content */
+  background-color: #ffffff; /* Background color for the right section */
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Box shadow for a slight elevation effect */
 }
 
-.imageLayout:hover {
-  transform: scale(1.1); /* Increase scale to 110% on hover */
+.rightUser h2 {
+  text-align: center; /* Center-align the heading */
+  margin-bottom: 20px; /* Add some bottom margin to the heading */
 }
 
 .tableForProperty {
   width: 100%;
 }
 
+.tableForProperty th,
 .tableForProperty td {
-  padding: 10px;
+  padding: 12px;
+}
+
+.tableForProperty th {
+  background-color: #007bff; /* Header background color */
+  color: #fff; /* Header text color */
+}
+
+.tableForProperty td {
   border-bottom: 1px solid #ddd;
 }
 
-.imageLayout {
-  width:100%;
-  border-radius: 10px;
-  object-fit: cover;
-}
-
-h2 {
-  margin-bottom: 10px;
+.imageLayout:hover {
+  transform: scale(1.1); /* Increase scale to 110% on hover */
 }
 
 .pagination {
@@ -96,4 +102,35 @@ h2 {
   border-color: #007bff;
   color: #fff;
   cursor: pointer;
+}
+/* Chat window styles */
+.chatWindow {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  width: 300px;
+  background-color: #fff;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  padding: 10px;
+}
+
+.messageContainer {
+  height: 200px;
+  overflow-y: auto;
+  margin-bottom: 10px;
+}
+
+.message {
+  padding: 5px 10px;
+  margin-bottom: 5px;
+  border-radius: 5px;
+}
+
+.message.user {
+  background-color: #e6f2ff;
+}
+
+.message.other {
+  background-color: #f2f2f2;
 }

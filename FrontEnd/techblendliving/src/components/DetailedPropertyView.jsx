@@ -12,18 +12,17 @@ export function DetailedPropertyView() {
   const [currentPage, setCurrentPage] = useState(1);
   const propertiesPerPage = 1; // Display one property per page
   const [details, setDetails] = useState([]);
+  const [messages, setMessages] = useState([]);
+  const [newMessage, setNewMessage] = useState("");
   async function populateData() {
     try {
       const id = sessionStorage.getItem("id");
       const response = await fetchById(id);
-      
       const propertyId = sessionStorage.getItem("property-id");
       const property = await getPropertyById(propertyId);
       setPropertyData(property.data);
-      console.log(propertyData.address)
-      const propertydata = await servicesDataFetchByCity(propertyData.address);
+      const propertydata = await servicesDataFetchByCity(property.data.address); // Access propertyData.address after it's set
       setDetails(propertydata.data);
-      
     } catch (error) {
       console.log(error);
     }
@@ -31,6 +30,13 @@ export function DetailedPropertyView() {
 
   const handleGoBack = () => {
     navigate(`/userview`);
+  };
+  const handleSendMessage = () => {
+    if (newMessage.trim() !== "") {
+      setMessages([...messages, { text: newMessage, sender: "user" }]);
+      setNewMessage("");
+      // Here you can implement logic to send the message to the server or other users
+    }
   };
 
   useEffect(() => {
@@ -98,66 +104,59 @@ export function DetailedPropertyView() {
             </table>
           </div>
         </div>
-
-        {/* Pagination */}
-        {/* <Pagination>
-          <Pagination.Item
-            onClick={() => paginate(currentPage - 1)}
-            disabled={currentPage === 1}
-          >
-            Previous
-          </Pagination.Item>
-          <Pagination.Item
-            onClick={() => paginate(currentPage + 1)}
-            disabled={currentPage === Math.ceil(propertyData.length / propertiesPerPage)}
-          >
-            Next
-          </Pagination.Item>
-        </Pagination> */}
       </div>
       <div className="rightUser">
-      <center><h2>Properties</h2></center>
-         <Container className="containerHost">
-            <Row>
-            <Table  style={{textAlign:"center"}}>
-      <thead>
-        <tr>
-          <th>Service Name</th>
-          <th>City</th>
-          <th>Pin Code</th>
-          <th>Description</th>
-          <th>Rating</th>
-        </tr>
-      </thead>
-      <tbody>
-         {details.map(d=>
-        <tr>
-          <td>{d.serviceName}</td>
-          <td>{d.city}</td>
-          <td>{d.pinCode}</td>
-          <td>{d.description}</td>
-
-          
-          {/* <Button style={{marginLeft: 1 + 'em'}}variant="danger" onClick={()=>{
-           // handleDelete(d.id)
-          }}>Delete</Button> */}
-           {/* <Button style={{marginLeft: 1 + 'em'}}variant="success" onClick={()=>{
-            // handleApprove(d.id)
-          }}>Edit</Button> */}
-          
-          <td>{d.Remarks}</td>
-         
-        </tr>
-       )}
-      </tbody>
-    </Table>
-            </Row>
+        <center><h2>Properties</h2></center>
+        <Container className="containerHost">
+          <Row>
+            <Table style={{ textAlign: "center" }}>
+              <thead>
+                <tr>
+                  <th>Name</th>
+                  <th>Email</th>
+                  <th>Contact Details</th>
+                  <th>Service Name</th>
+                  <th>City</th>
+                  <th>Pin Code</th>
+                  <th>Description</th>
+                  <th>Rating</th>
+                </tr>
+              </thead>
+              <tbody>
+                {details.map(d =>
+                  <tr key={d.id}> {/* Ensure each row has a unique key */}
+                    <td>{d.name}</td>
+                    <td>{d.email}</td>
+                    <td>{d.phoneNumber}</td>
+                    <td>{d.serviceName}</td>
+                    <td>{d.city}</td>
+                    <td>{d.pinCode}</td>
+                    <td>{d.description}</td>
+                    <td>{d.Remarks}</td>
+                  </tr>
+                )}
+              </tbody>
+            </Table>
+          </Row>
         </Container>
-        {/* <Button variant="success" className="nxtbtn" onClick={()=>{
-          navigate(`/tempview`);
-        }}>View</Button> */}
       </div>
-
+      <div className="chatWindow">
+        <h3>Chat</h3>
+        <div className="messageContainer">
+          {messages.map((message, index) => (
+            <div key={index} className={`message ${message.sender}`}>
+              {message.text}
+            </div>
+          ))}
+        </div>
+        <input
+          type="text"
+          placeholder="Type your message..."
+          value={newMessage}
+          onChange={(e) => setNewMessage(e.target.value)}
+        />
+        <Button onClick={handleSendMessage}>Send</Button>
+      </div>
     </div>
   );
 }
