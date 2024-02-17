@@ -47,11 +47,15 @@ export function TempView() {
           const chatFetch = await fetchChatById(ownerId, userId);
           const replyChat = await fetchChatReceiverById(userId, ownerId);
           return [...chatFetch.data, ...replyChat.data];
+
         });
 
         const allMessages = await Promise.all(messagesPromises);
         const combinedMessages = allMessages.flat();
         setMessages(combinedMessages);
+        console.log(messages);
+        
+        const id="mehul";
 
       } catch (error) {
         console.log(error);
