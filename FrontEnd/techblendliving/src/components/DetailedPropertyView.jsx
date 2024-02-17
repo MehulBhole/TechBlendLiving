@@ -46,8 +46,10 @@ export function DetailedPropertyView() {
    console.log(replyChat.data)
       // Combine both chat data before updating the state
       const combinedMessages = [...chatFetch.data, ...replyChat.data];
+
       
       setMessages((prevMessages) => [...prevMessages, ...combinedMessages]);
+      console.log(messages);
     } catch (error) {
       console.log(error);
     }
@@ -87,6 +89,7 @@ export function DetailedPropertyView() {
 
   useEffect(() => {
     populateData();
+    console.log(messages);
   }, []);
 
   // Change page

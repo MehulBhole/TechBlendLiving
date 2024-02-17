@@ -27,6 +27,7 @@ import { Profile } from './components/Profile';
 import { ServiceDashBoard } from './components/ServiceDashBoard';
 import { DetailedPropertyView } from './components/DetailedPropertyView';
 import { Feedback } from './components/Feedback'
+import { PaymentGateway } from './components/PaymentGateway';
 
 
 
@@ -72,6 +73,7 @@ function App() {
   <Route path="/servicedashboard" element={<ServiceDashBoard></ServiceDashBoard>}></Route>
   <Route path="/detailedPropertyView" element={<DetailedPropertyView></DetailedPropertyView>}></Route>
   <Route path="/fetchFeedbackDetails" element={<Feedback />} />
+  <Route path="/paymentgateway" element={<PaymentGateway></PaymentGateway>}></Route>
 
  
  </Routes>
