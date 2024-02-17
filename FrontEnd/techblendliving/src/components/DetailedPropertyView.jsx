@@ -5,7 +5,7 @@ import { fetchById, getPropertyById } from "../services/User";
 import { useNavigate } from "react-router-dom";
 import "../Css/DetailedProperty.css";
 import { servicesDataFetchByCity } from "../services/ServiceProvider";
-import { fetchChatById, sendChatData } from "../services/Chat";
+import { fetchChatById, fetchChatReceiverById, sendChatData } from "../services/Chat";
 
 export function DetailedPropertyView() {
   
@@ -34,10 +34,20 @@ export function DetailedPropertyView() {
       setDetails(propertydata.data);
       const receiverId = property.data.ownerOriginalId;
       console.log(receiverId);
-      const chatFetch = await fetchChatById(id, receiverId);
-      setMessages(chatFetch.data);
-      console.log(chatFetch.data);
+      // const chatFetch = await fetchChatById(id, receiverId);
+      // setMessages(chatFetch.data);
+      // console.log(chatFetch.data);
 
+      const chatFetch = await fetchChatById(id, receiverId);
+      console.log(chatFetch.data)
+
+      // Fetch chat data for the user's reply to the owner
+      const replyChat = await fetchChatReceiverById(receiverId, id);
+   console.log(replyChat.data)
+      // Combine both chat data before updating the state
+      const combinedMessages = [...chatFetch.data, ...replyChat.data];
+      
+      setMessages((prevMessages) => [...prevMessages, ...combinedMessages]);
     } catch (error) {
       console.log(error);
     }
