@@ -1,7 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { FaFacebookMessenger, FaUser } from "react-icons/fa";
 import { getOwnerById, propertyDataFetch } from "../services/Owner";
-import "../Css/TempView.css";
 import { Button, Container, Row, Table } from "react-bootstrap";
 import { fetchChatById, fetchChatReceiverById, messagesReceived, sendChatData } from "../services/Chat";
 import { fetchById } from "../services/User";
@@ -44,24 +43,20 @@ export function TempView() {
         const userDataArray = await Promise.all(userDataPromises);
         setUserData(userDataArray);
 
-        // Fetch chat messages with the first user initially
-        if (uniqueSendersArray.length > 0) {
-          const firstUserId = uniqueSendersArray[0];
-          
-          // Fetch chat data for the owner's conversation with the first user
-          const chatFetch = await fetchChatById(ownerId, firstUserId);
-          console.log(chatFetch.data)
+        const messagesPromises = uniqueSendersArray.map(async (userId) => {
+          const chatFetch = await fetchChatById(ownerId, userId);
+          const replyChat = await fetchChatReceiverById(userId, ownerId);
+          return [...chatFetch.data, ...replyChat.data];
 
-          // Fetch chat data for the user's reply to the owner
-          const replyChat = await fetchChatReceiverById(firstUserId, ownerId);
-       console.log(replyChat.data)
-          // Combine both chat data before updating the state
-          const combinedMessages = [...chatFetch.data, ...replyChat.data];
-          
-          setMessages((prevMessages) => [...prevMessages, ...combinedMessages]);
-          
-        }
+        });
+
+        const allMessages = await Promise.all(messagesPromises);
+        const combinedMessages = allMessages.flat();
+        setMessages(combinedMessages);
+        console.log(messages);
         
+        const id="mehul";
+
       } catch (error) {
         console.log(error);
       }
@@ -72,8 +67,6 @@ export function TempView() {
 
   const toggleChatWindow = () => {
     setShowChatWindow(!showChatWindow);
-    console.log(messages);
-    setMessages(messages)
   };
 
   const handleSendMessage = async () => {
@@ -87,11 +80,10 @@ export function TempView() {
         senderName: profileOwner.name
       };
 
-      setNewMessage(""); // Clear the input field
+      setNewMessage("");
 
       try {
         const response = await sendChatData(messageObject);
-        // Update the messages state with the sent message
         setMessages(prevMessages => [...prevMessages, messageObject]);
         console.log(response);
       } catch (error) {
@@ -112,7 +104,6 @@ export function TempView() {
 
   return (
     <div className="maindiv">
-      {/* Left Section */}
       <div className="left">
         <div className="heading">
           <h2>Owner Info</h2>
@@ -137,7 +128,6 @@ export function TempView() {
         </div>
       </div>
 
-      {/* Middle Section */}
       <div className="middletemp">
         <center><h3>Property Details</h3></center>
         <table className="table">
@@ -164,7 +154,6 @@ export function TempView() {
         </table>
       </div>
 
-      {/* Right Section */}
       <div className="right">
         <center><h2>Unique Senders</h2></center>
         <Container className="containerHost">
@@ -197,7 +186,6 @@ export function TempView() {
         </Container>
       </div>
       
-      {/* Chat Window */}
       {showChatWindow && (
         <div className="chatWindow">
           <h3>Chat</h3>
@@ -221,4 +209,4 @@ export function TempView() {
   );
 }
 
-export default TempView;
+
