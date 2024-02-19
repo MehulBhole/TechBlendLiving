@@ -13,6 +13,13 @@ public class Chat {
 @Id
 @GeneratedValue(strategy = GenerationType.IDENTITY )
 	int id;
+private String senderName;
+public String getSenderName() {
+	return senderName;
+}
+public void setSenderName(String senderName) {
+	this.senderName = senderName;
+}
 public int getId() {
 	return id;
 }

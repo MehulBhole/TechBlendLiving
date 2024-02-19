@@ -32,6 +32,12 @@ public class ChatController {
 		List<Chat> filteredChats = list.stream().filter(chat->chat.getReceiverId()==Receiverid).collect(Collectors.toList());
 		return filteredChats;
 	}
+	@GetMapping("/ownerchat/{Senderid}/{Receiverid}")
+	public List<Chat> ownerChat(@PathVariable int Senderid ,@PathVariable int Receiverid ){
+		List<Chat> list = chatRepository.findByReceiverId(Receiverid);
+		List<Chat> filteredChats = list.stream().filter(chat->chat.getSenderId()==Senderid).collect(Collectors.toList());
+		return filteredChats;
+	}
 	@GetMapping("/receivechatowner/{Receiverid}")
 	public List<Chat> senderChat(@PathVariable int Receiverid ){
 		List<Chat> list = chatRepository.findByReceiverId(Receiverid);
