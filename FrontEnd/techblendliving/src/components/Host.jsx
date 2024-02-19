@@ -2,8 +2,11 @@ import { useEffect, useState } from "react";
 import { Button, Container, Row, Table } from "react-bootstrap";
 import "../Css/Host.css";
 import { FetchApprovalDetails, FetchApprovalDetailsForServiceProvider, HostApprovalById, HostApprovalServiceById, HostRejectionById, HostRejectionServiceById } from "../services/HostApproval";
+import { useNavigate } from "react-router-dom";
+import { NavigationBar } from "./NavigationBar";
 export function Host(){
 
+  const navigate = useNavigate(); 
     const[owner,setOwner] = useState([]);
     const[service,setServiceProvider] = useState([]);
 
@@ -69,8 +72,10 @@ const handleApproveService=async(id)=>
    },[])
 
     return(
+      <>
+      <NavigationBar></NavigationBar>
     <div className="host">
-      <Button href="/fetchFeedbackDetails">Feedback's</Button>
+      
 
       <div className="OwnerApproval">
         <center><h2>Owner Approval</h2></center>
@@ -110,6 +115,9 @@ const handleApproveService=async(id)=>
        )}
       </tbody>
     </table>
+    <Button width="30px" onClick={()=>{
+        navigate(`/fetchFeedbackDetails`);
+      }}>Feedback's</Button>
             </Row>
         </Container>
         </div>
@@ -154,6 +162,8 @@ const handleApproveService=async(id)=>
             </Row>
         </Container>
         </div>
+       
     </div>
+    </>
     );
 }

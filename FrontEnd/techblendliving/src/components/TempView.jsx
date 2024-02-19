@@ -4,10 +4,12 @@ import { getOwnerById, propertyDataFetch } from "../services/Owner";
 import { Button, Container, Row, Table } from "react-bootstrap";
 import { fetchChatById, fetchChatReceiverById, messagesReceived, sendChatData } from "../services/Chat";
 import { fetchById } from "../services/User";
+import { useNavigate } from "react-router-dom";
+import { NavigationBar } from "./NavigationBar";
 
 export function TempView() {
   const ownerId = sessionStorage.getItem("owner-id");
-
+   const navigate = useNavigate();
   const [details, setDetails] = useState([]);
   const [userData, setUserData] = useState([]);
   const [showChatWindow, setShowChatWindow] = useState(false);
@@ -103,10 +105,13 @@ export function TempView() {
   };
 
   return (
+    <>
+    <NavigationBar></NavigationBar>
     <div className="maindiv">
+       
       <div className="left">
         <div className="heading">
-          <h2>Owner Info</h2>
+          <h2>Profile</h2>
           <hr />
         </div>
         <div>
@@ -125,6 +130,9 @@ export function TempView() {
           <div className="userdiv">
             <b>Phone No: {profileOwner.phoneNo}</b>
           </div>
+          <Button variant="success" className="nxtbtn" onClick={()=>{
+          navigate(`/private`);
+        }}>Back</Button>
         </div>
       </div>
 
@@ -155,7 +163,7 @@ export function TempView() {
       </div>
 
       <div className="right">
-        <center><h2>Unique Senders</h2></center>
+        <center><h2>Messages</h2></center>
         <Container className="containerHost">
           <Row>
             <Table striped bordered hover style={{ textAlign: "center" }}>
@@ -206,6 +214,7 @@ export function TempView() {
         </div>
       )}
     </div>
+    </>
   );
 }
 

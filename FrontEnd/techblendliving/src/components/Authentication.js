@@ -13,3 +13,8 @@ export const isLoggedInOwner = () => {
     if (data != null) return true;
     else return false;
   };
+  export const isLoggedInService = () => {
+    let data = sessionStorage.getItem("service-id");
+    if (data != null) return true;
+    else return false;
+  };

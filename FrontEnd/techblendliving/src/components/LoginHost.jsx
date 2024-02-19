@@ -4,6 +4,7 @@ import "../Css/Login.css";
 import { useNavigate } from "react-router-dom";
 
 import { HostLoginCredentials } from "../services/HostApproval";
+import { NavigationBar } from "./NavigationBar";
 
 export function LoginHost() {
   const navigate = useNavigate();
@@ -34,8 +35,9 @@ export function LoginHost() {
   return (
 
     <body class="loginbody">
+         <NavigationBar></NavigationBar>
       <div className="login-container">
-        <h1>Host Login</h1>
+       <center> <h1>Host Login</h1> </center>
         <br />
        
         <form onSubmit={handleSubmit}>

@@ -55,7 +55,7 @@ public class PaymentController {
 
     @PostMapping("/payment")
     public ResponseEntity<?> createPayment(@RequestBody Payment payment) throws SignatureException {
-        String generatedSignature = Signature.calculateRFC2104HMAC(payment.getRazorpayOrderId() + "|" +payment.getRazorpayPaymentId(), "iYHfHn2hAVANk25M7m3OFJG5");
+        String generatedSignature = Signature.calculateRFC2104HMAC(payment.getRazorpayOrderId() + "|" +payment.getRazorpayPaymentId(), "xNjqzwcBiVIwri31ADNIV6HE");
         if(payment.getRazorpaySignature().equals(generatedSignature)) {
             payment.setPaymentDateTime(LocalDateTime.now());
             return ResponseEntity.ok(paymentRepository.save(payment));

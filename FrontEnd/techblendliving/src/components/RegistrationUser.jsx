@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import "../Css/RegistrationUser.css";
 import { sendUserData } from "../services/User";
 import { useNavigate } from "react-router-dom";
+import { NavigationBar } from "./NavigationBar";
 
 export function RegistrationUser() {
   const navigate = useNavigate();
@@ -92,13 +93,14 @@ export function RegistrationUser() {
 
   return (
     <div className="userContainer">
+       <NavigationBar></NavigationBar>
       <div className="Reg-container">
-        <h1>User Registration</h1>
+       <center> <h1>User Registration</h1> </center>
         <br />
-        <h5>
+        {/* <h5>
           <a href="/registrationowner">Register as tenant ?</a>
-        </h5>
-        <br />
+        </h5> */}
+      
         <form onSubmit={handleSubmit}>
           <br />
           <label>Name</label>

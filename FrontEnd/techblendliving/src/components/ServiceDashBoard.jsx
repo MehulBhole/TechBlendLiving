@@ -5,6 +5,7 @@ import { FaUser } from "react-icons/fa";
 import { OwnerDeleteById, getOnwerById, getOwnerById, propertyDataFetch, sendDataOwner } from "../services/Owner";
 import { useNavigate } from "react-router-dom";
 import { getServiceById, sendDataServiceDetails, serviceDeleteById, servicesDataFetch } from "../services/ServiceProvider";
+import { NavigationBar } from "./NavigationBar";
 
 export function ServiceDashBoard() {
   const id = sessionStorage.getItem("service-id");
@@ -74,12 +75,13 @@ export function ServiceDashBoard() {
   }, []);
 
   return (
-   
+   <>
+   <NavigationBar></NavigationBar>
     <div className="maindiv">
-     
+      
     <div className="serviceleft">
     <div className="heading">
-          <h2>Service Info</h2>
+          <h2>Profile</h2>
           <hr></hr>
         </div>
         <div >
@@ -167,7 +169,7 @@ export function ServiceDashBoard() {
       </section>
     </div>
     <div className="right">
-    <center><h2>Properties</h2></center>
+    <center><h2>Services</h2></center>
          <Container className="containerHost">
             <Row>
             <Table striped bordered hover style={{textAlign:"center"}}>
@@ -205,11 +207,11 @@ export function ServiceDashBoard() {
     </Table>
             </Row>
         </Container>
-        <Button variant="success" className="nxtbtn" onClick={()=>{
+        {/* <Button variant="success" className="nxtbtn" onClick={()=>{
           navigate(`/tempview`);
-        }}>View</Button>
+        }}>View</Button> */}
     </div>
     </div>
-  
+    </>
   );
 }

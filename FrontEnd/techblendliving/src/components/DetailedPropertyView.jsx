@@ -6,6 +6,7 @@ import { useNavigate } from "react-router-dom";
 import "../Css/DetailedProperty.css";
 import { servicesDataFetchByCity } from "../services/ServiceProvider";
 import { fetchChatById, fetchChatReceiverById, sendChatData } from "../services/Chat";
+import { NavigationBar } from "./NavigationBar";
 
 export function DetailedPropertyView() {
   
@@ -96,8 +97,11 @@ export function DetailedPropertyView() {
   const paginate = (pageNumber) => setCurrentPage(pageNumber);
 
   return (
+    <>
+    <NavigationBar></NavigationBar>
     <div className="userview">
-      <Button className="backbtn" onClick={handleGoBack}>
+      
+      <Button className="backbtn"   variant="btn btn-outline-success" onClick={handleGoBack}>
         Back
       </Button>
 
@@ -218,5 +222,6 @@ export function DetailedPropertyView() {
         </Container>
       </div>
     </div>
+    </>
   );
 }

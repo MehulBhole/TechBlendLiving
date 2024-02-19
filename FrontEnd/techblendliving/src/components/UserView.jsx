@@ -5,6 +5,7 @@ import { useEffect, useState } from "react";
 import { fetchById } from "../services/User";
 import imgandrew from "../media/a.jpg";
 import { Route, useNavigate } from "react-router-dom";
+import { NavigationBar } from "./NavigationBar";
 
 export function UserView() {
   const navigate = useNavigate();
@@ -37,7 +38,10 @@ export function UserView() {
   }, []);
 
   return (
+    <>
+     <NavigationBar></NavigationBar>
     <div className="userview">
+      
       <div className="leftuser">
         <div className="heading">
           <h2>User Info</h2>
@@ -138,5 +142,6 @@ export function UserView() {
       </div>
      
     </div>
+    </>
   );
 }

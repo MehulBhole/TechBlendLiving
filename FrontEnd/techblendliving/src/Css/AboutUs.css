@@ -1,6 +1,7 @@
 .AboutUsbody {
-  font-family: Arial, sans-serif;
   
+  font-family: "Montserrat", sans-serif;
+  font-optical-sizing: auto;
   background-image: url(BG5.svg);
 }
 .team-img {
