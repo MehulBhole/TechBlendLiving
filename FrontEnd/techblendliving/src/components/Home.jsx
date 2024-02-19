@@ -8,6 +8,7 @@ import img2 from "../media/8.jpg";
 import img3 from "../media/9.jpg";
 import { useNavigate } from 'react-router-dom';
 import BackTop from 'antd/es/float-button/BackTop';
+import { NavigationBar } from "./NavigationBar";
 
 
 export function Home() {
@@ -60,6 +61,7 @@ export function Home() {
 
   return (
     <div className="mainbdy" >
+      <NavigationBar></NavigationBar>
       <style>{customStyles}</style>
       
       <br />

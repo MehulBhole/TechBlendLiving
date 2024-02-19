@@ -9,11 +9,12 @@ import { BsLinkedin, BsTwitter } from "react-icons/bs";
 import { Container } from "react-bootstrap";
 
 import '../Css/AboutUs.css';
+import { NavigationBar } from "./NavigationBar";
 
 export function AboutUs() {
     return (
         <>
-
+ <NavigationBar></NavigationBar>
             <body class="AboutUsbody" style={{ height: '320vh' }}>
                 <section className="section-white mt-5">
                     <div className="container_text-center" style={{ background: '#fff', paddingBottom: '20px' }}>

@@ -2,6 +2,8 @@
 
 /* General styles */
 body {
+  font-family: "Montserrat", sans-serif;
+  font-optical-sizing: auto;
   font-family: Arial, sans-serif;
   margin: 0;
   padding: 0;

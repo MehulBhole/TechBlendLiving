@@ -4,6 +4,7 @@ import "../Css/Dashboard.css";
 import { FaUser } from "react-icons/fa";
 import { OwnerDeleteById, getOnwerById, getOwnerById, propertyDataFetch, sendDataOwner } from "../services/Owner";
 import { useNavigate } from "react-router-dom";
+import { NavigationBar } from "./NavigationBar";
 
 export function Dashboard() {
   const id = sessionStorage.getItem("owner-id");
@@ -84,11 +85,13 @@ export function Dashboard() {
   }, []);
 
   return (
-   
+   <>
+   <NavigationBar></NavigationBar>
     <div className="maindiv">
+      
     <div className="left">
     <div className="heading">
-          <h2>Owner Info</h2>
+          <h2>Profile</h2>
           <hr></hr>
         </div>
         <div >
@@ -216,10 +219,10 @@ export function Dashboard() {
             </Row>
         </Container>
         <Button variant="success" className="nxtbtn" onClick={()=>{
-          navigate(`/tempview`);
+          navigate(`private/tempview`);
         }}>View</Button>
     </div>
     </div>
-  
+    </>
   );
 }

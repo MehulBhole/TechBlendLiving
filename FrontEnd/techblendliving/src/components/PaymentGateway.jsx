@@ -2,6 +2,7 @@ import { useState, useEffect } from "react";
 import axios from "axios";
 import swal from "sweetalert";
 import "../Css/PaymentGateway.css";
+import { NavigationBar } from "./NavigationBar";
 
 export function PaymentGateway() {
   const [amount, setAmount] = useState("");
@@ -107,6 +108,7 @@ export function PaymentGateway() {
 
   return (
     <div className="App">
+       <NavigationBar></NavigationBar>
         <div className="appPayment">
       <form onSubmit={paymentHandler}>
         <label htmlFor="fname">Name: </label>

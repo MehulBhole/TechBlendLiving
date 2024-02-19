@@ -4,6 +4,7 @@ import { useNavigate } from "react-router-dom";
 import { sendFeedbackData } from "../services/User";
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
+import { NavigationBar } from "./NavigationBar";
 
 export function ContactUs() {
   const navigate = useNavigate();
@@ -36,7 +37,10 @@ export function ContactUs() {
   };
 
   return (
+    <>
+     <NavigationBar></NavigationBar>
     <div className="maincontactus">
+     
       <ToastContainer/>
       <div className="containercontact">
         <h1>Connect With us</h1>
@@ -117,5 +121,6 @@ export function ContactUs() {
         </div>
       </div>
     </div>
+    </>
   );
 }

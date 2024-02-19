@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import { FetchFeedbackDetails } from "../services/HostApproval";
+import { NavigationBar } from "./NavigationBar";
 
 
 
@@ -22,6 +23,7 @@ export function Feedback() {
 
 return (
     <>
+    <NavigationBar></NavigationBar>
     <table className="table"  >
             <thead>
               <tr>

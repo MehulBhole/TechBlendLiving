@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import { sendServiceProviderData } from "../services/ServiceProvider";
 import "../Css/RegisterOwner.css";
 import { useNavigate } from "react-router-dom";
+import { NavigationBar } from "./NavigationBar";
 
 export function RegistrationServiceProvider() {
   const navigate = useNavigate();
@@ -83,9 +84,9 @@ export function RegistrationServiceProvider() {
         const response = await sendServiceProviderData(formData);
         console.log(response);
         if (!response.data.status) {
-          alert("User Already Registered !!");
+          alert("Wait till Approval !!!!");
         } else {
-          alert("Wait till Approval !!");
+          alert("User Already Registered !!");
           navigate(`/`);
         }
       } catch (error) {
@@ -96,13 +97,14 @@ export function RegistrationServiceProvider() {
 
   return (
     <div className="ownercontainer">
+       <NavigationBar></NavigationBar>
       <div className="regowner-container">
-        <h1>Service Provider Registration</h1>
+       <center> <h1>Service Provider Registration</h1> </center>
         <br />
-        <h5>
+        {/* <h5>
           <a href="/registrationuser">Register as Service Provider ?</a>
-        </h5>
-        <br />
+        </h5> */}
+       
         <form onSubmit={handleSubmit}>
           <label>Name</label>
           <input type="text" name="name" onChange={handleChange} required />

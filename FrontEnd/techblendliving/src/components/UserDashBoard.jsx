@@ -7,6 +7,7 @@ import {
   getSearchProperty,
 } from "../services/User";
 import { useNavigate } from "react-router-dom";
+import { NavigationBar } from "./NavigationBar";
 
 export function UserDashBoard() {
   const navigate = useNavigate();
@@ -35,7 +36,7 @@ export function UserDashBoard() {
   }
 
   const handleGoBack = () => {
-    navigate(`/userview`); // Navigate back one step in the history stack
+    navigate(-1); // Navigate back one step in the history stack
   };
 
   const handleSearch = (e) => {
@@ -88,8 +89,11 @@ export function UserDashBoard() {
   const paginate = (pageNumber) => setCurrentPage(pageNumber);
 
   return (
+    <>
+     <NavigationBar></NavigationBar>
     <div className="userview">
-      <Button className="backbtn" onClick={handleGoBack}>
+      
+      <Button className="backbtn" variant="btn btn-outline-success" onClick={handleGoBack}>
         Back
       </Button>
       {/* Left section */}
@@ -195,7 +199,7 @@ export function UserDashBoard() {
                               onClick={()=>{
                                 sessionStorage.setItem('property-id',property.id);
 
-                                navigate(`/detailedPropertyView`)
+                                navigate(`privateuser/detailedPropertyView`)
                               }}
                             />
                           </td>
@@ -237,5 +241,6 @@ export function UserDashBoard() {
       </div>
 
     </div>
+    </>
   );
 }

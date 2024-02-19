@@ -6,6 +6,7 @@ import { useNavigate } from "react-router-dom";
 import "../Css/Profile.css";
 import { getOwnerById } from "../services/Owner";
 import { getServiceById } from "../services/ServiceProvider";
+import { NavigationBar } from "./NavigationBar";
 
 export function Profile() {
   const navigate = useNavigate();
@@ -69,9 +70,21 @@ export function Profile() {
     const { name, value } = e.target;
     setEditedUserData({ ...editedUserData, [name]: value });
   };
+  const handleGoBack = () => {
+    if(sessionStorage.getItem("id") != null)
+    navigate(-1);
+   if(sessionStorage.getItem("owner-id") != null)
+   navigate(-1);
+  };
 
   return (
+    <>
+     <NavigationBar></NavigationBar>
     <div className="profile-container">
+      
+        <Button className="backbtn"   variant="btn btn-outline-success" onClick={handleGoBack}>
+        Back
+      </Button>
       <div className="card-header">
         <h2>Profile</h2>
         <hr />
@@ -150,5 +163,6 @@ export function Profile() {
         </div>
       </div>
     </div>
+    </>
   );
 }

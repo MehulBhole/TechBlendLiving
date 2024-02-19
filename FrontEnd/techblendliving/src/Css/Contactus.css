@@ -1,5 +1,10 @@
+*{
+    font-family: "Montserrat", sans-serif;
+  font-optical-sizing: auto;
+}
 .maincontactus{
     width: auto;
+  
     background-image: url(BG5.svg);
     height: 850px;
 }

@@ -3,6 +3,7 @@ import "../Css/Login.css";
 import { sendLoginData } from "../services/User";
 import { useNavigate } from "react-router-dom";
 import { sendServiceProviderLoginData } from "../services/ServiceProvider";
+import { NavigationBar } from "./NavigationBar";
 
 
 export function LoginServiceProvider() {
@@ -19,7 +20,7 @@ export function LoginServiceProvider() {
 
       if (response.data.status) {
         sessionStorage.setItem('service-id', response.data.id);
-        navigate(`/servicedashboard`)
+        navigate(`/privateservice`)
 
       }else{
         alert("Invalid Credentials !!");
@@ -34,6 +35,7 @@ export function LoginServiceProvider() {
   return (
 
     <body class="loginbody">
+       <NavigationBar></NavigationBar>
       <div className="login-container">
        <center> <h1>Service Login</h1></center>
         <br />

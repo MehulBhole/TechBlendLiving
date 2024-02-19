@@ -9,6 +9,7 @@ import img2 from "../media/jhadu.jpg"; // Change the path accordingly
 import img4 from "../media/kachra.jpg"; // Change the path accordingly
 import img3 from "../media/nali.jpg"; // Change the path accordingly
 import img1 from "../media/plumber.jpg"; // Change the path accordingly
+import { NavigationBar } from "./NavigationBar";
 
 export function ServiceView() {
   const [userdata, setUserData] = useState({
@@ -34,7 +35,10 @@ export function ServiceView() {
   }, []);
 
   return (
+    <>
+    <NavigationBar></NavigationBar>
     <div className="userview">
+       
       <div className="leftuser">
         <div className="heading">
           <h2>User Info</h2>
@@ -207,5 +211,6 @@ export function ServiceView() {
         </div>
       </div>
     </div>
+    </>
   );
 }

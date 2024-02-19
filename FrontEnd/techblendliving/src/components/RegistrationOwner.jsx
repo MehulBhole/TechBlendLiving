@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import { sendOwnerData } from "../services/Owner";
 import "../Css/RegisterOwner.css";
 import { useNavigate } from "react-router-dom";
+import { NavigationBar } from "./NavigationBar";
 
 export function RegistrationOwner() {
   const navigate = useNavigate();
@@ -94,13 +95,14 @@ export function RegistrationOwner() {
 
   return (
     <div className="ownercontainer">
+       <NavigationBar></NavigationBar>
       <div className="regowner-container">
-        <h1>Owner Registration</h1>
+      <center>  <h1>Owner Registration</h1> </center>
         <br />
-        <h5>
+        {/* <h5>
           <a href="/registrationuser">Register as Owner ?</a>
-        </h5>
-        <br />
+        </h5> */}
+       
         <form onSubmit={handleSubmit}>
           <label>Name</label>
           <input

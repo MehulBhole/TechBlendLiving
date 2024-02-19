@@ -5,6 +5,7 @@ import { useNavigate } from "react-router-dom";
 import { Container, Nav, Navbar } from "react-bootstrap";
 import { LinkContainer } from "react-router-bootstrap";
 import { loginOwnerData } from "../services/Owner";
+import { NavigationBar } from "./NavigationBar";
 
 export function LoginOwner() {
   const navigate = useNavigate();
@@ -34,8 +35,9 @@ export function LoginOwner() {
   return (
 
     <body class="loginbody">
+       <NavigationBar></NavigationBar>
       <div className="login-container">
-        <h1>Owner Login</h1>
+       <center> <h1>Owner Login</h1> </center>
         <br />
        
         <form onSubmit={handleSubmit}>

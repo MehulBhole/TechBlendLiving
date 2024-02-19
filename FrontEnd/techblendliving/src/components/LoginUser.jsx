@@ -4,6 +4,7 @@ import { sendLoginData } from "../services/User";
 import { useNavigate } from "react-router-dom";
 import { Container, Nav, Navbar } from "react-bootstrap";
 import { LinkContainer } from "react-router-bootstrap";
+import { NavigationBar } from "./NavigationBar";
 
 export function LoginUser() {
   const navigate = useNavigate();
@@ -34,8 +35,9 @@ export function LoginUser() {
   return (
 
     <body class="loginbody">
+      <NavigationBar></NavigationBar>
       <div className="login-container">
-        <h1>User Login</h1>
+       <center> <h1>User Login</h1> </center>
         <br />
        
         <form onSubmit={handleSubmit}>
