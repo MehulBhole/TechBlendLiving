@@ -17,7 +17,7 @@ export function Dashboard() {
     address: '',
     image1: '', // Initialize image state as null
   });
-  
+
 
   const handleChange = (e) => {
     if (e.target.type === 'file') {
@@ -85,19 +85,19 @@ export function Dashboard() {
   }, []);
 
   return (
-   <>
-   <NavigationBar></NavigationBar>
-    <div className="maindiv">
-      
-    <div className="left">
-    <div className="heading">
-          <h2>Profile</h2>
-          <hr></hr>
-        </div>
-        <div >
-        <div className="usericon">
-  <FaUser size={90}></FaUser>
-</div>
+    <>
+      <NavigationBar></NavigationBar>
+      <div className="maindiv">
+
+        <div className="left">
+          <div className="heading">
+            <h2>Profile</h2>
+            <hr></hr>
+          </div>
+          <div >
+            <div className="usericon">
+              <FaUser size={90}></FaUser>
+            </div>
 
 
             {profileowner && (
@@ -124,105 +124,102 @@ export function Dashboard() {
               </div>
             )}
           </div>
-          <Button variant="success" onClick={()=>{
+          <Button variant="success" onClick={() => {
             navigate(`/profile`)
           }}  >View</Button>
-        
-    </div>
-    <div className="middle">
-    <center> <h3>Property Details</h3></center>
-   <hr></hr>
-   <br></br>
-      <section >
-      
-        
-          <form onSubmit={handleSave}>
-            <div className="radiobutton">
-              <label htmlFor="property">Rental Type</label>
-              <input type="radio" name="rentalType" onChange={handleChange} value="PG" /> PG
-              <input type="radio" name="rentalType"  onChange={handleChange} value="1BHK" /> 1BHK
-              <input type="radio" name="rentalType" onChange={handleChange} value="2BHK" /> 2BHK
-              <input type="radio" name="rentalType"  onChange={handleChange} value="3BHK" /> 3BHK
-              <input type="radio" name="rentalType" onChange={handleChange} value="1RK" /> 1RK
-            </div>
-            <br />
 
-            <label htmlFor="rent">Rent</label>
-            <input type="Number" id="rent" name="rent" onChange={handleChange} required />
+        </div>
+        <div className="middle">
+          <center> <h3>Property Details</h3></center>
+          <hr></hr>
+          <br></br>
+          <section >
 
-            <div className="radiobutton">
-              <label htmlFor="furnished">Furnished</label>
-              <input type="radio" name="furnished" onChange={handleChange} value="Fully Furnished" /> Fully Furnished
-              <input type="radio" name="furnished" onChange={handleChange} value="Semi-Furnished" /> Semi-Furnished
-              <input type="radio" name="furnished"  onChange={handleChange} value="No" /> No
-            </div>
 
-            <label>Address</label>
-            <textarea
-              className="txtarea"
-              rows={4}
-              name="address"
-              onChange={handleChange}
-              cols={10}
-            />
+            <form onSubmit={handleSave}>
+              <div className="radiobutton">
+                <label htmlFor="property">Rental Type</label>
+                <input type="radio" name="rentalType" onChange={handleChange} value="PG" /> PG
+                <input type="radio" name="rentalType" onChange={handleChange} value="1BHK" /> 1BHK
+                <input type="radio" name="rentalType" onChange={handleChange} value="2BHK" /> 2BHK
+                <input type="radio" name="rentalType" onChange={handleChange} value="3BHK" /> 3BHK
+                <input type="radio" name="rentalType" onChange={handleChange} value="1RK" /> 1RK
+              </div>
+              <br />
 
-             <label htmlFor="image1">Images</label>
-            <input type="file" name="image1" accept="image/*"  onChange={handleChange}  />
+              <label htmlFor="rent">Rent</label>
+              <input type="Number" id="rent" name="rent" onChange={handleChange} required />
 
-           
-            <center>
-              <button className="nxtbtn" type="submit">
-                Save
-              </button>
-            </center>
-          </form>
-       
-      </section>
-    </div>
-    <div className="right">
-    <center><h2>Properties</h2></center>
-         <Container className="containerHost">
+              <div className="radiobutton">
+                <label htmlFor="furnished">Furnished</label>
+                <input type="radio" name="furnished" onChange={handleChange} value="Fully Furnished" /> Fully Furnished
+                <input type="radio" name="furnished" onChange={handleChange} value="Semi-Furnished" /> Semi-Furnished
+                <input type="radio" name="furnished" onChange={handleChange} value="No" /> No
+              </div>
+
+              <label>Address</label>
+              <textarea
+                className="txtarea"
+                rows={4}
+                name="address"
+                onChange={handleChange}
+                cols={10}
+              />
+
+              <label htmlFor="image1">Images</label>
+              <input type="file" name="image1" accept="image/*" onChange={handleChange} />
+
+
+              <center>
+                <button className="nxtbtn" type="submit">
+                  Save
+                </button>
+              </center>
+            </form>
+
+          </section>
+        </div>
+        <div className="right">
+          <center><h2>Properties</h2></center>
+          <div className="containerHost">
             <Row>
-            <Table striped bordered hover style={{textAlign:"center"}}>
-      <thead>
-        <tr>
-          <th>Rental Type</th>
-          <th>Rent</th>
-          <th>Furnished Status</th>
-          <th>Address</th>
-          <th>Action</th>
-        </tr>
-      </thead>
-      <tbody>
-         {details.map(d=>
-        <tr>
-          <td>{d.rentalType}</td>
-          <td>{d.rent}</td>
-          <td>{d.furnished}</td>
-         
-          <td>{d.address}</td>
-
-          <td>
-          <Button style={{marginLeft: 1 + 'em'}}variant="danger" onClick={()=>{
-            handleDelete(d.id)
-          }}>Delete</Button>
-           {/* <Button style={{marginLeft: 1 + 'em'}}variant="success" onClick={()=>{
+            <Table className="table-properties" striped bordered hover style={{ textAlign: "center", width: "90%",marginLeft:"5%" }}>
+                <thead>
+                  <tr>
+                    <th>Rental Type</th>
+                    <th>Rent</th>
+                    <th>Furnished Status</th>
+                    <th>Address</th>
+                    <th>Action</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  {details.map(d =>
+                    <tr>
+                      <td>{d.rentalType}</td>
+                      <td>{d.rent}</td>
+                      <td>{d.furnished}</td>
+                      <td>{d.address}</td>
+                      <td>
+                        <Button style={{ marginLeft: 1 + 'em' }} variant="danger" onClick={() => {
+                          handleDelete(d.id)
+                        }}>Delete</Button>
+                        {/* <Button style={{marginLeft: 1 + 'em'}}variant="success" onClick={()=>{
             // handleApprove(d.id)
           }}>Edit</Button> */}
-          </td>
-          <td>{d.Remarks}</td>
-          <td></td>
-        </tr>
-       )}
-      </tbody>
-    </Table>
+                      </td>
+                      {/* <td>{d.Remarks}</td> */}
+                    </tr>
+                  )}
+                </tbody>
+              </Table>
             </Row>
-        </Container>
-        <Button variant="success" className="nxtbtn" onClick={()=>{
-          navigate(`private/tempview`);
-        }}>View</Button>
-    </div>
-    </div>
+          </div>
+          <button variant="danger" className="nxtbtn" onClick={() => {
+            navigate(`private/tempview`);
+          }}>View</button>
+        </div>
+      </div>
     </>
   );
 }

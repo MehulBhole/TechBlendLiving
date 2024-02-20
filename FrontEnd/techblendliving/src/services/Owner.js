@@ -61,4 +61,4 @@ export async function OwnerDeleteById(propertyid,id)
             console.log(error);
     }
                 
-}
+}   

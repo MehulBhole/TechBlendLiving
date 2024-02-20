@@ -3,7 +3,7 @@ body {
   font-optical-sizing: auto;
     margin: 0;
     padding: 0;
-    background-image: url('./BG5.svg');
+    /* background-image: url('./BG5.svg'); */
     background-size: cover;
     background-repeat: no-repeat;
 }
@@ -272,4 +272,13 @@ button:hover {
     font-size: 18px;
     color: #666;
     margin-bottom: 10px;
+}
+.table-properties{
+    max-width: 100%;
+}
+.containerHost{
+    /* margin-left: 10%; */
+    max-width: 100%;
+    text-align: "center";
+     width: "90%";
 }
