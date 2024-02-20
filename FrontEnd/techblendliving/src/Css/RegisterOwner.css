@@ -11,10 +11,16 @@
     box-shadow: 0 12px 15px rgba(0, 0, 0, 0.3);
     
 }
+.error{
+  background-color: #d823295b;
+}
 
 h1 {
     font-size: 24px;
     margin-bottom: 20px;
+}
+.error{
+  background-color: #d823295b;
 }
 
 label {
