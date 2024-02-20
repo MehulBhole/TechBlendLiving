@@ -13,6 +13,8 @@
 }
 .error{
   background-color: #d823295b;
+  border-radius: 12px;
+  padding-left: 2rem;
 }
 
 h1 {

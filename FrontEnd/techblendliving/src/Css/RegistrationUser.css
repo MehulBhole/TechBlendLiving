@@ -20,6 +20,11 @@ label {
     display: block;
     margin-bottom: 5px;
 }
+.error{
+    background-color: #d823295b;
+    border-radius: 12px;
+    padding-left: 2rem;
+  }
 
 input {
 	width: 100%;
