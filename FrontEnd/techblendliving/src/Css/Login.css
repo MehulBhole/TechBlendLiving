@@ -2,7 +2,7 @@
     font-family: Arial, sans-serif;
     margin: 0;
     padding: 0;
-    background-image: url(BG5.svg);
+    /* background-image: url(BG5.svg); */
     height: 800px;
 }
 
@@ -95,7 +95,7 @@ a:hover {
     padding: 30px;
     margin: 0px auto;
     background-color: #ebebeb;
-    box-shadow: 0 12px 15px rgba(0, 0, 0, 0.3);
+    box-shadow: 10 12px 15px rgba(0, 0, 0, 0.3);
 }
 .txt{
 	color: black;

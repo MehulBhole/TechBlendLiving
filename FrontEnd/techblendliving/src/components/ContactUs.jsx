@@ -43,11 +43,12 @@ export function ContactUs() {
      
       <ToastContainer/>
       <div className="containercontact">
-        <h1>Connect With us</h1>
-        <p>
+        <center><h1>Connect With us</h1>
+        <p className="sub-text">
           We would love to respond to your queries and help you succeed. <br />
           Feel free to get in touch with us
         </p>
+        </center>
         <div className="contact-box">
           <div className="contact-left">
             <h3>Send your Request</h3>

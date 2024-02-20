@@ -23,7 +23,7 @@ body {
   display: flex;
   min-height: 100vh; /* Adjusted minimum height */
   align-items: flex-start;
-  background-image: url("./BG5.svg");
+  /* background-image: url("./BG5.svg"); */
   background-size: cover;
   background-position: center;
   padding-top: 50px; /* Adjusted padding for better alignment */

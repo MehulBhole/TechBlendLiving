@@ -1,7 +1,7 @@
 .host{
     margin-top: 30px;
     height: 900px;
-    background-image: url(BG5.svg);
+    /* background-image: url(BG5.svg); */
     display: flex;
     
 }
@@ -15,4 +15,19 @@
 }
 .containerHost table{
     width: 100%;
+}
+.OwnerApproval{
+    max-width: 50%;
+}
+.serviceApproval{
+    max-width: 50%;
+}
+.main-body{
+    height: 1200px;
+}
+.feedback-btn{
+    background-color: e8e8e8;
+    max-width: 10%;
+    border-radius: 15px;
+    margin-top: 20px;
 }

@@ -1,0 +1,27 @@
+.heading{
+    max-width:  100%;
+}
+.sort-with-price{
+    /* border: 0.1px solid black; */
+    /* display: flex; */
+    padding-left: 0%;
+    max-width: 130%;
+    box-shadow: 0px 5px 15px 0px rgba(0, 0, 0, 0.3);
+    border-radius: 12px;
+
+}
+.search-for-city{
+    max-width: 50%;
+}
+.search-for-city-input{
+    max-width: 50%;
+    border: none;
+  border-bottom: 1px solid black;
+  margin-left: 1%;
+}
+.sort-with-price-input{
+    margin-left: 2%;
+    max-width: 25%;
+    border: none;
+    border-bottom: 1px solid black;
+}

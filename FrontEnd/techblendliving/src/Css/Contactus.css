@@ -1,57 +1,66 @@
-*{
+* {
     font-family: "Montserrat", sans-serif;
-  font-optical-sizing: auto;
+    font-optical-sizing: auto;
 }
-.maincontactus{
+
+.maincontactus {
     width: auto;
-  
-    background-image: url(BG5.svg);
+
+    /* background-image: url(BG5.svg); */
     height: 850px;
 }
-.containercontact{
+
+.containercontact {
     width: 80%;
     margin: 50px auto;
 
-   
+
 }
 
 
-.contact-box{
+.contact-box {
     background-color: #fff;
     display: flex;
     border: 2px #e8e8e8 solid;
     border-radius: 15px;
     box-shadow: 10px 12px 15px rgba(0, 0, 0, 0.3);
 }
-.contact-left{
+
+.contact-left {
     flex-basis: 60%;
     padding: 40px 60px;
 }
-.contact-right{
+
+.contact-right {
     flex-basis: 40%;
     border-radius: 15px;
     padding: 40px;
     background: #d8232a;
     color: white;
 }
-.fontsize{
+
+.fontsize {
     font-size: larger;
 }
-h1{
+
+h1 {
     margin-bottom: 10px;
 }
-.container p{
+
+.container p {
     margin-bottom: 40px;
 }
-.input-row{
+
+.input-row {
     display: flex;
     justify-content: space-between;
     margin-bottom: 20px;
 }
 
-.input-row .input-group{
-flex-basis: 45%;
+.input-row .input-group {
+    flex-basis: 45%;
 }
+
 /*
 .input-group{
     flex-basis: 45%;
@@ -83,7 +92,7 @@ button{
     margin-top: 20px;
     box-shadow: 0px 5px 15px 0px rgba(28, 0, 181, 0.3);
 }*/
-.btntag{
+.btntag {
     background: #d8232a;
     width: 20rem;
     border: none;
@@ -93,30 +102,37 @@ button{
     height: 35px;
     border: 30px;
     margin-top: 20px;
-    box-shadow: 0px 5px 15px 0px rgba(28, 0, 181, 0.3); 
+    box-shadow: 0px 5px 15px 0px rgba(28, 0, 181, 0.3);
 }
-textarea{
+
+textarea {
     width: 100%;
     border: 1px solid #ccc;
     outline: none;
     padding: 10px;
     box-sizing: border-box;
 }
-.contact-left h3{
-color: #1c00b5;
-font-weight: 600;
-margin-bottom: 30px;
+
+.contact-left h3 {
+    color: #1c00b5;
+    font-weight: 600;
+    margin-bottom: 30px;
 
 }
-.contact-right h3{
-font-weight: 600;
-margin-bottom: 30px;
-}
-    
-tr td:first-child{
-padding-right: 20px;
+
+.contact-right h3 {
+    font-weight: 600;
+    margin-bottom: 30px;
 }
 
-tr td{
-padding-top: 20px;
-    } 
+tr td:first-child {
+    padding-right: 20px;
+}
+
+tr td {
+    padding-top: 20px;
+}
+/* sub text  */
+.sub-text{
+    color: #868686d0;
+}

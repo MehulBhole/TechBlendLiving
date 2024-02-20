@@ -17,8 +17,8 @@ export function NavigationBar() {
   useEffect(() => {
     const id = sessionStorage.getItem("id");
     const ownerId = sessionStorage.getItem("owner-id");
-    const serviceId = sessionStorage.getItem("service-id")
-    const hostId = sessionStorage.getItem("host-id")
+    const serviceId = sessionStorage.getItem("service-id");
+    const hostId = sessionStorage.getItem("host-id");
     if (id !== null || ownerId !== null || serviceId !== null || hostId !== null) {
       setStatus(true); // Set status to true if both id and owner-id are present
     } else {
@@ -28,7 +28,7 @@ export function NavigationBar() {
 
   return (
     <>
-      <Navbar style={{ backgroundColor: "#D8232A" }} variant="dark">
+      <Navbar style={{ backgroundColor: "#D8232A", position: "fixed", top: 0, width: "100%", zIndex: 1000 }} variant="dark">
         <Container>
           <LinkContainer to="/">
             <img
@@ -100,17 +100,20 @@ export function NavigationBar() {
               </div>
              
               <Nav>
+                <div className="logout-btn-div">
               {status && (
-                <Button variant="light" onClick={handleLogout}>
+                <button className="logout-btn"  onClick={handleLogout}>
                   Logout
-                </Button>
+                </button>
                   )}
+              </div>
               </Nav>
             
             </Nav>
           </Navbar.Collapse>
         </Container>
       </Navbar>
+      <div style={{ height: "110px" }} /> {/* Add a placeholder to prevent content from being overlapped by the fixed navbar */}
     </>
   );
 }
