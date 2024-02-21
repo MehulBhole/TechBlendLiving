@@ -57,7 +57,7 @@ export function DetailedPropertyView() {
   }
 
   const handleGoBack = () => {
-    navigate(`/userview`);
+    navigate(-1);
   };
   const handleSendMessage = async () => {
     if (newMessage.trim() !== "") {
